@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --base-color: #f8f4ec;
+  --primary-color: #48617d;
+  --bold-color: #0e3b5a;
+  --accent-color: #e56a4b;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-size: 12pt;
+}
+
+
+body {
+  min-height: 100vh;
+  /* Fallback incase image does not load */
+  /* background: conic-gradient(
+    from 121deg,
+    var(--accent-color) 0deg,
+    var(--bold-color) 180deg,
+    var(--accent-color) 180deg,
+    var(--bold-color) 360deg
+  ); */
+  background-image: url(../Media/orange-blue-sky-image.jpg),conic-gradient(
+    from 121deg,
+    var(--accent-color) 0deg,
+    var(--bold-color) 180deg,
+    var(--accent-color) 180deg,
+    var(--bold-color) 360deg
+  );
+  background-size: cover;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+#navigation-bar,
+#screentime-extension {
+  padding: 1rem;
+  position: fixed;
+  width: 70vw;
+  left: 50%;
+  transform: translateX(-55%);
+  top: 2rem;
+  border-radius: 50px;
+
+  border: 3px solid hsl(0, 0%, 100%, 0.25);
+  background: hsl(0, 0%, 100%, 0.2);
+  backdrop-filter: blur(2px);
+  box-shadow: inset 0 0 8px 2px hsl(0, 0%, 100%, 0.25);
+}
+
+#navigation-bar > ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 4.5rem;
+}
+
+a.navigation {
+  text-decoration: none;
+  color: var(--base-color);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+
+  display: inline-block;
+  position: relative;
+  /* overflow: hidden; */
+  z-index: 1;
+  padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 50px;
+  transition: ease 250ms;
+}
+
+a.navigation::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid hsl(0, 0%, 100%, 0.15);
+  background: hsl(0, 0%, 100%, 0.2);
+  backdrop-filter: blur(2px);
+
+  border-radius: inherit;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: -1;
+  transition: transform ease 0.4s;
+}
+:focus{
+  border: none;
+  outline: none;
+}
+
+a.navigation:hover,
+a.navigation:focus {
+  font-size: 1.1em;
+}
+a.navigation:hover::before,
+a.navigation:focus::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.navigation .fa-solid {
+  display: none;
+  transition: ease 300ms;
+}
+
+.navigation:hover .fa-solid,
+.navigation:focus .fa-solid,
+.activePage .fa-solid {
+  display: inline-block;
+}
+
+.navigation:hover .fa-regular,
+.navigation:focus .fa-regular,
+.activePage .fa-regular {
+  display: none;
+}
+
+nav a.activePage {
+  background-color: #e56a4b66;
+  border: 2px solid hsl(0, 0%, 100%, 0.15);
+  backdrop-filter: blur(2px);
+}
+/* <--------------------------Widget Section --------------------------> */
+#camera-section,
+#tracker-list {
+  margin: 180px auto 30px auto;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#tracker-list{
+  height: 53vh;
+  background-color: var(--base-color);
+}
+
+
+#camera-widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 53vh;
+  position: relative;
+  margin: 0 auto;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.widget-front {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  height: 100%;
+  background-image: url(../Media/long-ai-image.png);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 50% 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.widget-back{
+  display:flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #0e3b5a;
+}
+
+#widget-video video{
+  height:100%;
+  width: 100%;
+}
+
+video.fit-to-width{
+  object-fit: contain;
+}
+
+#widget-video button{
+  color: var(--base-color);
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 5 px 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+
+}
+
+
+.widget-front > p {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--base-color);
+  
+  /* Centers the text lines if it wraps */
+  text-align: center; 
+  
+  /* Correct way to stretch text wider without breaking layout alignment */
+  font-stretch: 130%; 
+  letter-spacing: 0.1rem; /* Adjusted slightly so stretched letters don't overlap */
+  line-height: 1.4;
+}
+
+#widget-greeting button {
+  color: var(--base-color);
+  /* This is absolute, so it lifts out of the flex layout cascade */
+  /* It lets the <p> tag take up the absolute center of .widget-front unchallenged */
+  position: relative;
+  /* bottom: 17px;
+  left: 50%;
+  transform: translateX(-50%);  */
+  margin-top: 15px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  /* backdrop-filter: blur(2px);
+  box-shadow: inset 0 0 8px 2px hsl(0, 0%, 100%, 0.25);
+  background-color: #e56a4b66;
+  border: 2px solid hsl(0, 0%, 100%, 0.15); */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  
+  /* Border & Shape */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  
+  /* Depth / Shadows */
+  box-shadow: 
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.15);
+
+    transition: transform ease 200ms;
+}
+
+.widget-front button:hover,
+.widget-front button:focus{
+  transform: scaleX(1.2) scaleY(1.1);
+  font-weight: 600;
+}
+
+#launch-widget {
+  display: block;
+  width: 50%;
+  margin: 20px auto 0 auto; /* Moved layout separation here to prevent pushing inside the card box */
+  padding: 5px 10px;
+  border-radius: 50px;
+  border: 3px solid hsl(0, 0%, 100%, 0.25);
+  background: hsl(0, 0%, 100%, 0.2);
+  backdrop-filter: blur(2px);
+  box-shadow: inset 0 0 8px 2px hsl(0, 0%, 100%, 0.25);
+   color: var(--base-color);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: transform ease 200ms;
+}
+
+#launch-widget:hover,
+#launch-widget:focus{
+  transform: scale(1.1);
+  background-color: #e56a4b66;
+  border: 2px solid hsl(0, 0%, 100%, 0.15);
+  backdrop-filter: blur(2px);
+}

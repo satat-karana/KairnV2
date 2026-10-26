@@ -1,0 +1,23 @@
+{
+  "name": "screen-time-tracker",
+  "version": "1.0.0",
+  "description": "Desktop app that tracks active screen time",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "@paymoapp/active-window": "^1.1.2"
+  },
+  "build": {
+    "appId": "com.screentime.tracker",
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

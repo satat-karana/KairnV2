@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../CSS/sign-up-styles.css" />
+    <script type="text/javascript" src="../JS/validation.js" defer></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h1>Signup</h1>
+      <p id = 'error-message'></p>
+      <form id="form">
+        <div>
+          <label for="firstname-input">
+            <i class="fa-regular fa-user"></i>
+          </label>
+          <input
+            type="text"
+            name="firstname"
+            id="firstname-input"
+            autocomplete="given-name"
+            placeholder="Kairn"
+          />
+        </div>
+
+        <div>
+          <label for="email-input">
+            <i class="fa-regular fa-envelope"></i>
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email-input"
+            autocomplete="email"
+            placeholder="kairn@email.com"
+          />
+        </div>
+        <div>
+          <label for="password-input">
+            <i class="fa-solid fa-shield-halved"></i>
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password-input"
+            autocomplete="email"
+            placeholder="Password"
+          />
+        </div>
+        <div>
+            <label for="repeat-password-input">
+              <i class="fa-solid fa-shield"></i>
+            </label>
+          <input
+            type="password"
+            name="repeat-password"
+            id="repeat-password-input"
+            autocomplete="new-password"
+            placeholder="Repeat Previous Password"
+          />
+        </div>
+        <!-- <div>
+                <h2>Submit</h2>
+            </div> -->
+        <div>
+          <button>I'm serious about improving</button>
+        </div>
+      </form>
+      <p>
+        <span class="bold">Already Been Locked In?</span>
+        <a href="login.html">login</a>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/styles.css" />
+    <title>Kairn</title>
+  </head>
+  <body>
+    <header>
+      <h1>Kairn</h1>
+    </header>
+    <main>
+      <section class="media">
+        <!-- <video id="webcam" autoplay playsinline></video> -->
+        <button onclick="startCamera()">Begin Feed</button>
+        <button onclick="stopCamera()">End Feed</button>
+      </section>
+
+      <section>
+        <button id="launch-widget" onclick="launchWidget()">
+          Launch Mirror Widget
+        </button>
+        <div id="mirror-widget" class="widget">
+          <div id="camera-view">
+            <video id="webcam" autoplay playsinline></video>
+            <br>
+            <p>Floating Mirror</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../JS/first-script.js"></script>
+  </body>
+</html>

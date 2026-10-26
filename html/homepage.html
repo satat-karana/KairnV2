@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/styles.css" />
+    <script type="text/javascript" src="../JS/nav.js" defer></script>
+    <script type="text/javascript" src="../JS/real-mirror-script.js" defer></script>
+    <title>Kairn</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div id="navigation-bar">
+          <ul>
+            <li class="navigation">
+              <a class="navigation" href="homepage.html">
+                <i class="fa-regular fa-compass"></i>
+                <i class="fa-solid fa-compass"></i>
+                Home
+              </a>
+            </li>
+            <li class="navigation">
+              <a class="navigation" href="#">
+                <i class="fa-regular fa-hourglass"></i>
+                <i class="fa-solid fa-hourglass-half"></i>
+                Screen Time
+              </a>
+            </li>
+            <li class="navigation">
+              <a class="navigation" href="#">
+                <i class="fa-regular fa-eye"></i>
+                <i class="fa-solid fa-eye"></i>
+                Camera
+              </a>
+            </li>
+            <li class="navigation">
+              <a class="navigation" href="#">
+                <i class="fa-regular fa-circle-question"></i>
+                <i class="fa-solid fa-circle-question"></i>
+                Info
+              </a>
+            </li>
+            <li class="navigation">
+              <a class="navigation" href="sign-up.html">
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-solid fa-user"></i>
+                Account
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- <span class="navigation">
+            <i class="fa-regular fa-address-card"></i>
+            <i class="fa-solid fa-address-card"></i>
+            <p></p>
+        </span> -->
+      </nav>
+    </header>
+    <section id="camera-section">
+        <div id="camera-widget">
+            <div class="widget-front" id="widget-greeting">
+                <!-- <img src="../Media/Light Oak Framed Whiteboard Cutout.png"> -->
+                <p>Wherever you go, we're right with you.</p>
+                <button onclick="startCamera()">Begin Camera Feed</button>
+            </div>
+            <div class="widget-back hidden" id="widget-video">
+                <video class = "fit-to-width" id="webcam" autoplay playsinline></video>
+                <button>End Feed</button>
+            </div>
+        </div>
+        <button id="launch-widget" onclick="launchWidget()">
+        Launch Mirror Widget
+        </button>
+    </section>
+  </body>
+</html>

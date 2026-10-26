@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Dashboard styles for the desktop app, matched to the website:
+   same palette, same Albert Sans font, same frosted-glass recipe as the nav bar. */
+
+:root {
+  /* Website palette */
+  --base-color: #f8f4ec;
+  --primary-color: #48617d;
+  --bold-color: #0e3b5a;
+  --accent-color: #e56a4b;
+
+  /* Glass recipe (from the website nav bar) */
+  --glass-light: hsl(0 0% 100% / 0.2);
+  --glass-border: hsl(0 0% 100% / 0.25);
+  --glass-edge: hsl(0 0% 100% / 0.15);
+  --accent-tint: #e56a4b66;
+
+  /* Navy tint behind the data cards so text stays readable on the photo.
+     Raise the last number for more contrast, lower it to see more sky. */
+  --card-tint: rgba(14, 59, 90, 0.5);
+  --row-tint: rgba(7, 30, 46, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Background on <html> so it covers the whole window while the list scrolls.
+   The gradient is a real fallback if the photo is missing. */
+html {
+  background-color: var(--bold-color);
+  background-image: url("../Media/orange-blue-sky-image.jpg"),
+    conic-gradient(
+      from 121deg,
+      var(--accent-color) 0deg,
+      var(--bold-color) 180deg,
+      var(--accent-color) 180deg,
+      var(--bold-color) 360deg
+    );
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body {
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--base-color);
+}
+
+/* ---------- Header ---------- */
+h1 {
+  margin-bottom: 1.25rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  line-height: 1.3;
+  text-shadow: 0 2px 14px rgba(14, 59, 90, 0.45);
+}
+
+.controls {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+/* ---------- Toggle button (ON = coral tint, OFF = plain glass) ---------- */
+.toggle-btn {
+  padding: 8px 22px;
+  border: 3px solid var(--glass-border);
+  border-radius: 50px;
+  background: var(--accent-tint);
+  backdrop-filter: blur(2px);
+  box-shadow: inset 0 0 8px 2px var(--glass-border);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform ease 200ms, background-color ease 200ms;
+}
+
+.toggle-btn.off {
+  background: var(--glass-light);
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus-visible {
+  transform: scale(1.06);
+}
+
+.toggle-btn:active {
+  transform: scale(0.97);
+}
+
+.toggle-btn:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--base-color);
+  outline-offset: 3px;
+}
+
+/* ---------- Empty state ("Waiting for activity...") ---------- */
+#tracker-list > p {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border: 3px dashed var(--glass-border);
+  border-radius: 30px;
+  background: var(--card-tint);
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- Category cards (built by the JS, rebuilt every second) ----------
+   No entrance animations or transitions on these: they would replay each rebuild. */
+details {
+  margin-bottom: 1rem;
+  border: 3px solid var(--glass-border);
+  border-radius: 30px;
+  background: var(--card-tint);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 8px 2px var(--glass-edge);
+  overflow: hidden;
+}
+
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:hover {
+  background: hsl(0 0% 100% / 0.08);
+}
+
+/* Inside the clipped rounded card, so pull the focus ring inward */
+summary:focus-visible {
+  outline-offset: -10px;
+}
+
+.arrow {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.75rem;
+  color: var(--accent-color);
+  transition: transform ease 200ms;
+}
+
+details[open] .arrow {
+  transform: rotate(90deg);
+}
+
+/* Same look as the website's active nav link */
+.group-total {
+  padding: 2px 14px;
+  border: 2px solid var(--glass-edge);
+  border-radius: 50px;
+  background: var(--accent-tint);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---------- Rows inside a card ---------- */
+.sub-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem 0.75rem 3.25rem;
+  border-top: 1px solid hsl(0 0% 100% / 0.12);
+  background: var(--row-tint);
+  font-size: 0.95rem;
+}
+
+.sub-name {
+  max-width: 70%;
+  overflow-wrap: anywhere; /* long page titles wrap instead of stretching the layout */
+  opacity: 0.85;
+}
+
+.sub-time {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 100% / 0.35);
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 0% 100% / 0.5);
+}
+
+/* ---------- Small windows ---------- */
+@media (max-width: 560px) {
+  body {
+    padding: 2rem 1rem 3rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  summary {
+    padding: 0.9rem 1.1rem;
+  }
+  .sub-item {
+    padding: 0.75rem 1.1rem 0.75rem 2.25rem;
+  }
+  .sub-name {
+    max-width: 62%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
